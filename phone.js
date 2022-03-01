@@ -5,6 +5,11 @@ const SearchPhone = ()=>{
     const searchText = searchInput.value;
     // console.log(searchText);
     searchInput.value = '';
+    const errorMessage = document.getElementById('error-message').style.display = 'none';
+    if(searchText == ''){
+       errorMessage.style.display = 'block';
+    }
+    else
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}
     `;
     // console.log(url);
