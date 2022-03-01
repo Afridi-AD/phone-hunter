@@ -16,8 +16,10 @@ const SearchPhone = ()=>{
 
 
 const displaySearchResult = data => {
+    const info = data.slice(0,20);
     const searchResult = document.getElementById('search-result');
-    data.forEach(phone => {
+    searchResult.textContent = '';
+    info.forEach(phone => {
         // console.log(phone);
 
         const div = document.createElement('div');
@@ -57,17 +59,29 @@ const LoadphoneDetails = phoneId =>{
 const displayMealDetail = phone => {
    console.log(phone);
    const phoneDetails = document.getElementById('phone-details');
+   
+   phoneDetails.textContent = '';
    const div = document.createElement('div')
    div.classList.add('card');
    div.innerHTML =`
    
    <img src="${phone.data.image}" class="card-img-top w-25 mx-auto mt-4" alt="...">
             <div class="card-body">
-              <h5 class="card-title">${phone.data.brand}</h5>
-              <p class="card-text">${phone.data.releaseDate}</p>
-              <p class="card-text">${phone.data.mainFeatures.chipSet}</p>
-              <p class="card-text">${phone.data.mainFeatures.displaySize}</p>
-              <p class="card-text">${phone.data.mainFeatures.memory}</p>
+              <h5 class="card-title"> Brand: ${phone.data.brand}</h5>
+              <p class="card-text">Release date : ${phone.data.releaseDate ? phone.data.releaseDate:"No release date found"}</p>
+              <p class="card-text">Chip : ${phone.data.mainFeatures.chipSet}</p>
+              <p class="card-text">Screen size : ${phone.data.mainFeatures.displaySize}</p>
+              <p class="card-text">Memory : ${phone.data.mainFeatures.memory}</p>
+              <p class="card-text"> sensor : ${phone.data.mainFeatures.sensors}</p>
+              <h6>Others</h6>
+              <p class="card-text">Bluetooth : ${phone.data.others.Bluetooth}</p>
+              <p class="card-text">GPS :  ${phone.data.others.GPS}</p>
+              <p class="card-text">NFC : ${phone.data.others.NFC}</p>
+              <p class="card-text">Radio : ${phone.data.others.Radio}</p>
+              <p class="card-text"> USB : ${phone.data.others.USB}</p>
+              <p class="card-text">WLAN : ${phone.data.others.WLAN}</p>
+              
+
               
               </div>
              
