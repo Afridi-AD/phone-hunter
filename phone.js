@@ -61,12 +61,17 @@ const displayMealDetail = phone => {
    div.classList.add('card');
    div.innerHTML =`
    
-   <img src="${phone.data.image}" class="card-img-top w-50" alt="...">
+   <img src="${phone.data.image}" class="card-img-top w-25 mx-auto mt-4" alt="...">
             <div class="card-body">
-              <h5 class="card-title">${phone.phone_name}</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h5 class="card-title">${phone.data.brand}</h5>
+              <p class="card-text">${phone.data.releaseDate}</p>
+              <p class="card-text">${phone.data.mainFeatures.chipSet}</p>
+              <p class="card-text">${phone.data.mainFeatures.displaySize}</p>
+              <p class="card-text">${phone.data.mainFeatures.memory}</p>
+              
+              </div>
              
-   `
+              `;
 
    phoneDetails.appendChild(div);
 }
