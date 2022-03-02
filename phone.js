@@ -1,9 +1,9 @@
 
+// search text section 
 
 const SearchPhone = ()=>{
     const searchInput = document.getElementById('search-input');
     const searchText = searchInput.value;
-    // console.log(searchText);
     searchInput.value = '';
     
     if(searchText == ''){
@@ -12,9 +12,10 @@ const SearchPhone = ()=>{
     }
    else{
     
+    // call api 
+    
     const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}
     `;
-    // console.log(url);
     fetch(url)
     .then(res => res.json())
     .then(data => displaySearchResult(data));
@@ -23,7 +24,7 @@ const SearchPhone = ()=>{
     
    }
    
-
+//  display search result section 
 
 const displaySearchResult = data => {
     const searchResult = document.getElementById('search-result');
@@ -40,9 +41,6 @@ const displaySearchResult = data => {
     
         searchResult.textContent = '';
         info.forEach(phone => {
-            // console.log(phone);
-           
-    
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -60,11 +58,10 @@ const displaySearchResult = data => {
             `;
             searchResult.appendChild(div);
         })
-        }
-    
-    
+        }  
 }
 
+//load  single phone details section 
 
 const LoadphoneDetails = phoneId =>{
     console.log(phoneId);
@@ -78,6 +75,7 @@ const LoadphoneDetails = phoneId =>{
 
 }
 
+// display  single phone details section 
 
 const displayPhoneDetail = phone => {
    console.log(phone);
@@ -97,7 +95,7 @@ const displayPhoneDetail = phone => {
               <p class="card-text"><span class = "fw-bold">Screen size :</span>  ${phone.data.mainFeatures.displaySize}</p>
               <p class="card-text"><span class = "fw-bold">Memory :</span>  ${phone.data.mainFeatures.memory}</p>
               <p class="card-text"> <span class = "fw-bold">Sensor :</span>  ${phone.data.mainFeatures.sensors}</p>
-              <h6>Others</h6>
+              <h3 class ="text-primary">Others</h3>
               <p class="card-text"><span class = "fw-bold">Bluetooth :</span>  ${phone.data.others.Bluetooth}</p>
               <p class="card-text"><span class = "fw-bold">GPS :</span>   ${phone.data.others.GPS}</p>
               <p class="card-text"><span class = "fw-bold">NFC :</span>${phone.data.others.NFC}</p>

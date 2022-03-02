@@ -5,9 +5,7 @@ h1{
 }
 
 
-#empty-string-error-message{
-    display: none;
-}
+
 
 #empty-string-error-message{
     display: none;
@@ -15,6 +13,7 @@ h1{
     font-size: 20px;
 }
 #no-phone-error-message{
+    display: none;
     font-size: 30px;
     color: rgb(136, 52, 13);
 }
