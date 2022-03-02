@@ -3,3 +3,12 @@
 h1{
     color: rgb(117, 28, 12);
 }
+
+
+#empty-string-error-message{
+    display: none;
+}
+
+#no-phone-error-message{
+    display: none;
+}
