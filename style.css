@@ -9,6 +9,12 @@ h1{
     display: none;
 }
 
-#no-phone-error-message{
+#empty-string-error-message{
     display: none;
+    color: chocolate;
+    font-size: 20px;
+}
+#no-phone-error-message{
+    font-size: 30px;
+    color: rgb(136, 52, 13);
 }

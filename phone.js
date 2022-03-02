@@ -17,46 +17,52 @@ const SearchPhone = ()=>{
     // console.log(url);
     fetch(url)
     .then(res => res.json())
-    .then(data => displaySearchResult(data.data));
-    
- 
+    .then(data => displaySearchResult(data));
+
+     }
     
    }
-    
-   
-    
-    
-    }
    
 
 
 const displaySearchResult = data => {
-    const info = data.slice(0,20);
     const searchResult = document.getElementById('search-result');
     
-    searchResult.textContent = '';
-    info.forEach(phone => {
-        // console.log(phone);
-       
-
-    const div = document.createElement('div');
-    div.classList.add('col');
-    div.innerHTML = `
-        <div class="card">
-            <img src="${phone.image}" class="card-img-top w-50 " alt="...">
-            <div class="card-body">
-            <h4>${phone.brand}</h4>  
-            <h5 class="card-title">${phone.phone_name}</h5>
-              
-              <button onclick = 'LoadphoneDetails("${phone.slug}")' id="details-button" class ="rounded-pill px-3 bg-success">Details</button>
-        </div>
-       
-      </div>
-        
-        `;
-        searchResult.appendChild(div);
-
-    })
+    if(data.status== false){
+        document.getElementById('no-phone-error-message').style.display = 'block';
+        searchResult.innerHTML ='';
+    }
+    else{
+        document.getElementById('no-phone-error-message').style.display = 'none';
+        searchResult.innerHTML ='';
+        const info = data.data.slice(0,20);
+    
+    
+        searchResult.textContent = '';
+        info.forEach(phone => {
+            // console.log(phone);
+           
+    
+        const div = document.createElement('div');
+        div.classList.add('col');
+        div.innerHTML = `
+            <div class="card">
+                <img src="${phone.image}" class="card-img-top w-50 " alt="...">
+                <div class="card-body">
+                <h4>${phone.brand}</h4>  
+                <h5 class="card-title">${phone.phone_name}</h5>
+                  
+                  <button onclick = 'LoadphoneDetails("${phone.slug}")' id="details-button" class ="rounded-pill px-3 bg-success">Details</button>
+            </div>
+           
+          </div>
+            
+            `;
+            searchResult.appendChild(div);
+        })
+        }
+    
+    
 }
 
 
