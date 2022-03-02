@@ -9,20 +9,24 @@ const SearchPhone = ()=>{
     if(searchText == ''){
        errorMessage.style.display = 'block';
     }
-    else
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}
-    `;
-    // console.log(url);
-    fetch(url)
-    .then(res => res.json())
-    .then(data => displaySearchResult(data.data));
-
-}
+    else{
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}
+        `;
+        // console.log(url);
+        fetch(url)
+        .then(res => res.json())
+        .then(data => displaySearchResult(data.data));
+        
+    
+    }
+    }
+   
 
 
 const displaySearchResult = data => {
     const info = data.slice(0,20);
     const searchResult = document.getElementById('search-result');
+    
     searchResult.textContent = '';
     info.forEach(phone => {
         // console.log(phone);
@@ -55,13 +59,13 @@ const LoadphoneDetails = phoneId =>{
     `;
     fetch(url)
     .then(res => res.json())
-    .then(data => displayMealDetail(data));
+    .then(data => displayPhoneDetail(data));
     
 
 }
 
 
-const displayMealDetail = phone => {
+const displayPhoneDetail = phone => {
    console.log(phone);
    const phoneDetails = document.getElementById('phone-details');
    
@@ -72,19 +76,20 @@ const displayMealDetail = phone => {
    
    <img src="${phone.data.image}" class="card-img-top w-25 mx-auto mt-4" alt="...">
             <div class="card-body">
+              <h5 class="card-title"> Name : ${phone.data.name}</h5>
               <h5 class="card-title"> Brand: ${phone.data.brand}</h5>
-              <p class="card-text">Release date : ${phone.data.releaseDate ? phone.data.releaseDate:"No release date found"}</p>
-              <p class="card-text">Chip : ${phone.data.mainFeatures.chipSet}</p>
-              <p class="card-text">Screen size : ${phone.data.mainFeatures.displaySize}</p>
-              <p class="card-text">Memory : ${phone.data.mainFeatures.memory}</p>
-              <p class="card-text"> sensor : ${phone.data.mainFeatures.sensors}</p>
+              <p class="card-text"><span class = "fw-bold">Release date :</span>  ${phone.data.releaseDate ? phone.data.releaseDate:"No release date found"}</p>
+              <p class="card-text"><span class = "fw-bold">Chip :</span>  ${phone.data.mainFeatures.chipSet}</p>
+              <p class="card-text"><span class = "fw-bold">Screen size :</span>  ${phone.data.mainFeatures.displaySize}</p>
+              <p class="card-text"><span class = "fw-bold">Memory :</span>  ${phone.data.mainFeatures.memory}</p>
+              <p class="card-text"> <span class = "fw-bold">Sensor :</span>  ${phone.data.mainFeatures.sensors}</p>
               <h6>Others</h6>
-              <p class="card-text">Bluetooth : ${phone.data.others.Bluetooth}</p>
-              <p class="card-text">GPS :  ${phone.data.others.GPS}</p>
-              <p class="card-text">NFC : ${phone.data.others.NFC}</p>
-              <p class="card-text">Radio : ${phone.data.others.Radio}</p>
-              <p class="card-text"> USB : ${phone.data.others.USB}</p>
-              <p class="card-text">WLAN : ${phone.data.others.WLAN}</p>
+              <p class="card-text"><span class = "fw-bold">Bluetooth :</span>  ${phone.data.others.Bluetooth}</p>
+              <p class="card-text"><span class = "fw-bold">GPS :</span>   ${phone.data.others.GPS}</p>
+              <p class="card-text"><span class = "fw-bold">NFC :</span>${phone.data.others.NFC}</p>
+              <p class="card-text"><span class = "fw-bold">Radio :</span> ${phone.data.others.Radio}</p>
+              <p class="card-text"><span class = "fw-bold">USB :</span> ${phone.data.others.USB}</p>
+              <p class="card-text"><span class = "fw-bold">WLAN :</span> ${phone.data.others.WLAN}</p>
               
 
               
